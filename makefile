@@ -1,19 +1,20 @@
 HOME=/home/apj
 CC=gcc
 CFLAGS=-W -Wall -ansi -pedantic -I $(HOME)/include/
-LDFLAGS=-lgraphics -L $(HOME)/lib/ -lX11 -lpthread
-EXEC=graph
+LDFLAGS=-lgraphics -L $(HOME)/lib/ -lX11
+EXEC=jeu
 SRC= $(wildcard *.c)
 OBJ= $(SRC:.c=.o)
 
 all: $(EXEC)
 
-graph: $(OBJ)
+jeu: $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-main.o: graph.h
+%.o: %.c %.h
+	$(CC) -o $@ -c $< $(CFLAGS)
 
-%.o: %.c
+jeu.o: jeu.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 .PHONY: clean mrproper
