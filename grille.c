@@ -3,7 +3,6 @@
 #include "graphics.h"
 #define FOOTER 30
 #define dark_blue 0x061229
-
 void debug(char matrix[6][7], int row){
 
 int i;
@@ -54,20 +53,21 @@ gr_set_line_width(1);
 for (j = 0; j < row; j++){
 	/*gr_moveto(j*c,k);
 	gr_lineto((500-j*c),(k));*/
-	gr_moveto(j*c,0);
-	gr_lineto(j*c,c*row+FOOTER);
+	gr_moveto(j*c+margin,0);
+	gr_lineto(j*c+margin,c*row+FOOTER);
 }
 for (j = 0; j < row; j++){
         /*gr_moveto(j*c,k);
         gr_lineto((500-j*c),(k));*/
-        gr_moveto(0,j*c+FOOTER);
-        gr_lineto(c*row,c*j+FOOTER);
+        gr_moveto(margin,j*c+FOOTER);
+        gr_lineto(c*row+margin,c*j+FOOTER);
 }
 /*--Drawing footer--*/
 gr_moveto(0,0);
 gr_set_color(dark_blue);
 gr_fill_rect(0,0,gr_size_x(),FOOTER);
 gr_set_color(white);
+/*gr_set_font(FONT);*/
 gr_draw_string(text);
 
 }
