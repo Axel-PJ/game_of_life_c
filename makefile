@@ -1,7 +1,7 @@
 HOME=/home/apj
 CC=gcc
 CFLAGS=-W -Wall -ansi -pedantic -I $(HOME)/include/
-LDFLAGS=-lgraphics -L $(HOME)/lib/ -lX11
+LDFLAGS=-lgraphics -L $(HOME)/lib/ -lX11 -lpthread
 EXEC=jeu
 SRC= $(wildcard *.c)
 OBJ= $(SRC:.c=.o)
