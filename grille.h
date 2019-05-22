@@ -1,16 +1,16 @@
 #ifndef H_GL_GRAPH
 #define H_GL_GRAPH
-#define NBL 22
-#define NBC 36
+int NBL;
+int NBC;
+#define BLANC ' '
+#define NOIR 'n'
 #define FOOTER 30
-#define KEY_PRESSED  0x00000004
-#define DARK_BLUE 0x061229
-void debug(char grille[NBL][NBC+1], int row);
+void debug(char **grille, int row,int col);
 void print_help();
 int calcule_cote(int w,int h,int nbc,int nbl);
-void affiche_grille(char grille[NBL][NBC+1],int row,int col,int c,int margin);
-void applique(char grille[NBL][NBC+1]);
+void affiche_grille(char **grille,int row,int col,int c,int margin);
+void applique(char **grille, char **grille2);
 int calcule_margin(int w,int c);
-void copie_grille(char grille[NBL][NBC+1], char grille2[NBL][NBC+1]);
-int compte_voisin(char grille[NBL][NBC+1],int i,int j);
+void copie_grille(char **grille, char **grille2);
+int compte_voisin(char **grille,int i,int j);
 #endif

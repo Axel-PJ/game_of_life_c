@@ -3,13 +3,19 @@
 #include "graphics.h"
 #include "grille.h"
 #define dark_blue 0x061229
-void debug(char grille[NBL][NBC+1], int row){
-
-int i;
-
-for (i=0;i<row;i++){
-	printf("%s\n",grille[i]);
-	}
+void debug(char **grille, int row, int col){
+int i,j;
+for (i = 0; i < row; i++) {
+		for (j = 0; j < col; j++) {
+			printf("%c", grille[i][j]); 
+    }
+    printf("\n");
+}
+/*for (i=0;i<row;i++){
+	for (j=0;j<3;j++){
+	printf("%c\n",((grille+i)+j));
+		}
+	}*/
 }
 
 void print_help(){
@@ -29,54 +35,44 @@ int c1,c2;
 c1=w/nbc;
 c2=h/nbl;
 	if (c1 > c2){
+		printf("coté = %d\n",c2);
 	return c2;
 	}
 	return c1;
+		printf("coté = %d\n",c1);
 }
 
-void affiche_grille(char grille[NBL][NBC+1],int row,int col,int c,int margin){
+void affiche_grille(char **grille,int row,int col,int c,int margin){
 /*--Var Init--*/
 int j,k;
-char *text="r: Refresh | q: Quit";
+/*char *text="r: Refresh | q: Quit";*/
 /*--Debug Help--*/
-printf("%d\n",c);
+/*printf("%d\n",c);
 printf("%d\n",margin);
-/*--Drawing tiles--*/
+--Drawing tiles--*/
 for (j = 0; j < row; j++)
 {
-	for (k = 0; k < col; k++)
+	for (k = 0; k < col-1; k++)
 	{
 		/*printf("%d\n",matrix[j][k]);*/
-		if ( grille[j][k] == 98 ){
-				/*gr_set_color(white);
-        		gr_fill_rect(j*c+margin, k*c+FOOTER, c, c);*/
+		if ( grille[j][k] == BLANC ){
+				
 		}
 		else{
-			gr_set_color(black);
-			gr_fill_rect(j*c+margin, k*c+FOOTER, c, c);
+				gr_set_color(black);
+				gr_fill_rect(j*c+margin, k*c+FOOTER, c, c);
    		}
 
 	}
 }
-
-/*--Drawing grid--*/
-/*gr_set_color(white);
-gr_set_line_width(1);
-for (j = 0; j < row; j++){
-	gr_moveto(j*c,k);
-	gr_lineto((500-j*c),(k));
-	gr_moveto(j*c+margin,0);
-	gr_lineto(j*c+margin,c*row+FOOTER);
 }
-for (j = 0; j < row; j++){
-        gr_moveto(j*c,k);
-        gr_lineto((500-j*c),(k));
-        gr_moveto(margin,j*c+FOOTER);
-        gr_lineto(c*row+margin,c*j+FOOTER);
-}*/
-/*--Drawing footer--*/
 
+void default_grille(char **grille, char **grille2){
+			int len;
+			char *ptr;
+			int i,j;
 }
+
 
 void draw_footer(){
 	char *text="r: Refresh | q: Quit";
